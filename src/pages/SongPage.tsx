@@ -1,8 +1,13 @@
+import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { songs } from '@/data/songs';
 import LyricsDisplay from '@/components/LyricsDisplay';
 import SocialLinks from '@/components/SocialLinks';
+import YouTubeEmbed from '@/components/YouTubeEmbed';
+import Footer from '@/components/Footer';
+
+type ChordLevel = 'standard' | 'advanced';
 
 function formatDate(dateStr: string): string {
   const date = new Date(dateStr + 'T00:00:00');
@@ -14,6 +19,10 @@ export default function SongPage() {
   const navigate = useNavigate();
 
   const song = songs.find((s) => s.id === id);
+
+  const hasStandard = Boolean(song?.standardSections);
+  const hasAdvanced = Boolean(song?.advancedSections);
+  const [chordLevel, setChordLevel] = useState<ChordLevel>(hasAdvanced ? 'advanced' : 'standard');
 
   if (!song) {
     return (
@@ -56,21 +65,48 @@ export default function SongPage() {
       </header>
 
       <main className="flex-1 px-4 pb-28 max-w-2xl mx-auto w-full overflow-x-hidden">
-        <LyricsDisplay sections={song.sections} />
+        {song.links.youtube && (
+          <div className="mb-6">
+            <YouTubeEmbed url={song.links.youtube} />
+          </div>
+        )}
+
+        {hasStandard && hasAdvanced && (
+          <div className="flex items-center gap-2 mb-4">
+            <button
+              onClick={() => setChordLevel('standard')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                chordLevel === 'standard'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white/10 text-gray-300 hover:bg-white/15'
+              }`}
+            >
+              Standard
+            </button>
+            <button
+              onClick={() => setChordLevel('advanced')}
+              className={`px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                chordLevel === 'advanced'
+                  ? 'bg-blue-600 text-white'
+                  : 'bg-white/10 text-gray-300 hover:bg-white/15'
+              }`}
+            >
+              Advanced
+            </button>
+          </div>
+        )}
+
+        <LyricsDisplay
+          sections={
+            (chordLevel === 'advanced' ? song.advancedSections : song.standardSections) ??
+            song.advancedSections ??
+            song.standardSections ??
+            []
+          }
+        />
       </main>
 
-      <footer className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-blue-900/80 via-gray-900/80 to-purple-900/80 backdrop-blur-sm border-t border-white/10 px-4 py-3 text-center text-xs text-gray-500">
-        <a
-          href="https://akivabuckman.com/chord-finder/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-blue-400 transition-colors"
-        >
-          Chord Finder
-        </a>
-        <span className="mx-2 opacity-40">·</span>
-        <span>akivabuckman.com</span>
-      </footer>
+      <Footer />
     </div>
   );
 }

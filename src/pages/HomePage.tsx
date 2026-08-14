@@ -3,6 +3,7 @@ import { Music, Search, Clock, List } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { songs } from '@/data/songs';
 import SongCard from '@/components/SongCard';
+import Footer from '@/components/Footer';
 import type { Song } from '@/types/song';
 
 const RECENT_COUNT = 6;
@@ -13,7 +14,10 @@ function songMatchesQuery(song: Song, query: string): boolean {
   const q = query.toLowerCase();
   if (song.title.toLowerCase().includes(q)) return true;
   if (song.artist?.toLowerCase().includes(q)) return true;
-  for (const section of song.sections) {
+  if (song.lyrics?.toLowerCase().includes(q)) return true;
+  if (song.hebrewLyrics?.includes(query)) return true;
+  const sections = song.standardSections ?? song.advancedSections ?? [];
+  for (const section of sections) {
     for (const line of section.lines) {
       const lyrics = line.replace(/\[[^\]]+\]/g, '');
       if (lyrics.toLowerCase().includes(q)) return true;
@@ -120,18 +124,7 @@ export default function HomePage() {
         )}
       </main>
 
-      <footer className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-blue-900/80 via-gray-900/80 to-purple-900/80 backdrop-blur-sm border-t border-white/10 px-4 py-3 text-center text-xs text-gray-500">
-        <a
-          href="https://akivabuckman.com/chord-finder/"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:text-blue-400 transition-colors"
-        >
-          Chord Finder
-        </a>
-        <span className="mx-2 opacity-40">·</span>
-        <span>akivabuckman.com</span>
-      </footer>
+      <Footer />
     </div>
   );
 }

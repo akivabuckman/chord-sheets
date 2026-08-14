@@ -4,7 +4,7 @@ import SongPage from '@/pages/SongPage';
 
 export default function App() {
   return (
-    <BrowserRouter basename="/chord-sheets">
+    <BrowserRouter basename="/chords">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/song/:id" element={<SongPage />} />

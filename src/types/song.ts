@@ -16,5 +16,8 @@ export interface Song {
   artist?: string;
   date: string;
   links: SongLinks;
-  sections: SongSection[];
+  standardSections?: SongSection[];
+  advancedSections?: SongSection[];
+  lyrics?: string;
+  hebrewLyrics?: string;
 }

@@ -15,7 +15,7 @@ export default function LyricsDisplay({ sections }: LyricsDisplayProps) {
               {section.label}
             </p>
           )}
-          <div className="font-mono text-sm leading-relaxed">
+          <div className="font-mono text-sm leading-relaxed overflow-x-auto">
             {section.lines.map((line, lineIdx) => {
               if (line === '') {
                 return <div key={lineIdx} className="h-3" />;
@@ -24,11 +24,11 @@ export default function LyricsDisplay({ sections }: LyricsDisplayProps) {
               return (
                 <div key={lineIdx}>
                   {hasChords && (
-                    <pre className="text-blue-300 font-semibold leading-none whitespace-pre overflow-x-auto">
+                    <pre className="text-blue-300 font-semibold leading-none whitespace-pre">
                       {chords}
                     </pre>
                   )}
-                  <pre className="text-gray-100 whitespace-pre overflow-x-auto">
+                  <pre className="text-gray-100 whitespace-pre">
                     {lyrics}
                   </pre>
                 </div>

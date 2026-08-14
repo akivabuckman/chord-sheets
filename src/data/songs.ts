@@ -9,7 +9,14 @@ import type { Song } from '@/types/song';
  *   artist    - optional artist name
  *   date      - ISO date string "YYYY-MM-DD"
  *   links     - optional social links (tiktok, instagram, facebook, youtube)
- *   sections  - array of song sections (verse, chorus, bridge, etc.)
+ *   standardSections - array of song sections (verse, chorus, bridge, etc.) using standard chords
+ *   advancedSections  - same sections using advanced/substitute chords
+ *
+ *   At least one of standardSections / advancedSections must be provided.
+ *   If both are provided, a toggle lets the user switch between them (advanced shown by default).
+ *   If only one is provided, it's shown with no toggle.
+ *   lyrics        - optional raw English lyrics (no chords), searched on the homepage
+ *   hebrewLyrics  - optional raw Hebrew lyrics (no chords), searched on the homepage
  *
  * CHORD FORMAT
  * ------------
@@ -36,7 +43,7 @@ export const songs: Song[] = [
     links: {
       youtube: 'https://www.youtube.com/watch?v=NrgmdOz227I',
     },
-    sections: [
+    standardSections: [
       {
         label: 'Verse 1',
         lines: [
@@ -79,16 +86,18 @@ export const songs: Song[] = [
       youtube: 'https://www.youtube.com/watch?v=ttEMYvpoR-k',
       instagram: 'https://www.instagram.com/',
     },
-    sections: [
+    lyrics: "I've heard there was a secret chord\nThat David played and it pleased the Lord\nBut you don't really care for music, do you?",
+    hebrewLyrics: 'שמעתי שיש אקורד סודי\nשדוד ניגן וזה מצא חן בעיני האל\nאבל לא ממש אכפת לך ממוזיקה, נכון?',
+    standardSections: [
       {
         label: 'Verse 1',
         lines: [
           '[C]I\'ve heard there was a [Am]secret chord',
           'That [C]David played and it [Am]pleased the Lord',
-          'But [F]you don\'t really [G]care for music, [C]do you? [G]',
+          'But [F]you don\'t really [C]care for music, [C]do you? [G]',
           '[C]It goes like this, the [F]fourth, the fifth',
           'The [Am]minor fall, the [F]major lift',
-          'The [G]baffled king com[Em]posing Halle[Am]lujah',
+          'The [G]baffled king com[C]posing Halle[Am]lujah',
         ],
       },
       {
@@ -96,6 +105,26 @@ export const songs: Song[] = [
         lines: [
           '[F]Hallelujah, [Am]Hallelujah',
           '[F]Hallelujah, [C]Hallelu[G]jah [C]',
+        ],
+      },
+    ],
+    advancedSections: [
+      {
+        label: 'Verse 1',
+        lines: [
+          '[Cmaj7]I\'ve heard there was a [Am9]secret chord',
+          'That [Cmaj7]David played and it [Am9]pleased the Lord',
+          'But [Fmaj7]you don\'t really [G13]care for music, [Cmaj7]do you? [G7sus4]',
+          '[Cmaj7]It goes like this, the [Fmaj7]fourth, the fifth',
+          'The [Am9]minor fall, the [Fmaj7]major lift',
+          'The [G13]baffled king com[Em7]posing Halle[Am9]lujah',
+        ],
+      },
+      {
+        label: 'Chorus',
+        lines: [
+          '[Fmaj7]Hallelujah, [Am9]Hallelujah',
+          '[Fmaj7]Hallelujah, [Cmaj7]Hallelu[G13]jah [Cadd9]',
         ],
       },
     ],
