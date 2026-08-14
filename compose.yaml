@@ -1,5 +1,6 @@
 services:
   server:
-    build: .
+    build:
+      context: .
     ports:
       - 5174:5174

@@ -1,34 +1,36 @@
-import { Link } from 'react-router-dom'
-import type { Song } from '@/types/song'
-import { Music } from 'lucide-react'
+import { useNavigate } from 'react-router-dom';
+import type { Song } from '@/types/song';
+import SocialLinks from '@/components/SocialLinks';
 
 interface SongCardProps {
   song: Song;
 }
 
 function formatDate(dateStr: string): string {
-  const date = new Date(dateStr + 'T00:00:00')
-  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })
+  const date = new Date(dateStr + 'T00:00:00');
+  return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
 }
 
 export default function SongCard({ song }: SongCardProps) {
+  const navigate = useNavigate();
+
   return (
-    <Link
-      to={`/song/${song.id}`}
-      className="block bg-white/5 hover:bg-white/10 border border-white/10 hover:border-blue-400/40 rounded-xl p-4 transition-all duration-200"
+    <div
+      onClick={() => navigate(`/song/${song.id}`)}
+      className="cursor-pointer rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-blue-500/40 transition-all duration-200 p-4 flex flex-col gap-2"
     >
-      <div className="flex items-start gap-3">
-        <div className="mt-0.5 text-blue-400 shrink-0">
-          <Music className="w-4 h-4" />
-        </div>
-        <div className="min-w-0">
-          <div className="font-semibold text-white truncate">{song.title}</div>
+      <div className="flex items-start justify-between gap-2">
+        <div>
+          <h2 className="text-base font-semibold text-white leading-snug">{song.title}</h2>
           {song.artist && (
-            <div className="text-sm text-gray-400 truncate">{song.artist}</div>
+            <p className="text-sm text-gray-400">{song.artist}</p>
           )}
-          <div className="text-xs text-gray-500 mt-1">{formatDate(song.date)}</div>
         </div>
+        <span className="text-xs text-gray-500 whitespace-nowrap pt-0.5">{formatDate(song.date)}</span>
       </div>
-    </Link>
-  )
+      <div onClick={(e) => e.stopPropagation()}>
+        <SocialLinks links={song.links} />
+      </div>
+    </div>
+  );
 }
