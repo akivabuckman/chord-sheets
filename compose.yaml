@@ -1,0 +1,5 @@
+services:
+  server:
+    build: .
+    ports:
+      - 5174:5174
