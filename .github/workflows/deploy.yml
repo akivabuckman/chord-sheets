@@ -64,5 +64,5 @@ jobs:
             docker run -d \
               --name chord-sheets \
               --network web \
-              -p 127.0.0.1:5174:5174 \
+              -p 127.0.0.1:5180:5174 \
               ${{ vars.ECR_REGISTRY }}/chord-sheets:${{ env.GIT_SHA }}
