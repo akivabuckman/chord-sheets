@@ -5,16 +5,21 @@ export interface SongLinks {
   youtube?: string;
 }
 
+export interface SongLine {
+  chords?: string;
+  lyrics: string;
+}
+
 export interface SongSection {
   label?: string;
-  lines: string[];
+  lines: SongLine[];
 }
 
 export interface Song {
   id: string;
   title: string;
   artist?: string;
-  date: string;
+  date?: string;
   links: SongLinks;
   standardSections?: SongSection[];
   advancedSections?: SongSection[];
