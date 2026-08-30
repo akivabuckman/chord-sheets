@@ -18,20 +18,26 @@ import type { Song } from '@/types/song';
  *   lyrics        - optional raw English lyrics (no chords), searched on the homepage
  *   hebrewLyrics  - optional raw Hebrew lyrics (no chords), searched on the homepage
  *
- * CHORD FORMAT
- * ------------
- * Each line in a section is a string with chords wrapped in [brackets].
- * The chord appears ABOVE the word/syllable immediately following the bracket.
+ * LINE FORMAT
+ * -----------
+ * Each line in a section is a { chords?, lyrics } pair:
+ *   chords  - optional raw string, printed as-is directly above the lyrics line.
+ *             Pad it with spaces yourself to line chords up over the right words/syllables.
+ *   lyrics  - the lyric text for that line (no chord markup).
  *
  * Example:
- *   "[Am]Yesterday [F]all my [C]troubles seemed so [G]far away"
+ *   { chords: 'Am        F         C              G', lyrics: 'Yesterday all my troubles seemed so far away' }
  *
  * Renders as:
  *   Am        F         C              G
  *   Yesterday all my troubles seemed so far away
  *
- * Lines without any brackets are rendered as plain lyric lines (no chord row).
- * Use an empty string "" for a blank spacer line between phrases.
+ * Lines with no `chords` are rendered as plain lyric lines (no chord row).
+ * Use { lyrics: '' } for a blank spacer line between phrases.
+ *
+ * For Hebrew (RTL) lines, the browser lays out the lyric text right-to-left,
+ * so lining up the chord string above it takes some manual trial and error in
+ * the running app - there's no automatic alignment for RTL text.
  */
 
 export const songs: Song[] = [
@@ -47,32 +53,32 @@ export const songs: Song[] = [
       {
         label: 'Verse 1',
         lines: [
-          '[F]Yesterday, [Em7]all my [A7]troubles seemed so [Dm]far away',
-          '[Bb]Now it [C7]looks as though they\'re [F]here to stay',
-          '[Dm]Oh I [G]believe in [Bb]yester[F]day',
+          { chords: 'F          Em7    A7                 Dm', lyrics: 'Yesterday, all my troubles seemed so far away' },
+          { chords: 'Bb     C7                      F', lyrics: "Now it looks as though they're here to stay" },
+          { chords: 'Dm   G          Bb    F', lyrics: 'Oh I believe in yesterday' },
         ],
       },
       {
         label: 'Verse 2',
         lines: [
-          '[F]Suddenly, [Em7]I\'m not [A7]half the man I [Dm]used to be',
-          '[Bb]There\'s a [C7]shadow hanging [F]over me',
-          '[Dm]Oh yes[G]terday [Bb]came [F]suddenly',
+          { chords: 'F         Em7     A7             Dm', lyrics: "Suddenly, I'm not half the man I used to be" },
+          { chords: 'Bb        C7             F', lyrics: "There's a shadow hanging over me" },
+          { chords: 'Dm    G      Bb   F', lyrics: 'Oh yesterday came suddenly' },
         ],
       },
       {
         label: 'Chorus',
         lines: [
-          '[Am]Why she [D]had to go I [F]don\'t know, she wouldn\'t [C]say',
-          '[Am]I said [D]something wrong, now I [F]long for yes[C]terday',
+          { chords: 'Am      D           F                        C', lyrics: "Why she had to go I don't know, she wouldn't say" },
+          { chords: 'Am     D                      F           C', lyrics: 'I said something wrong, now I long for yesterday' },
         ],
       },
       {
         label: 'Verse 3',
         lines: [
-          '[F]Yesterday, [Em7]love was [A7]such an easy [Dm]game to play',
-          '[Bb]Now I [C7]need a place to [F]hide away',
-          '[Dm]Oh I [G]believe in [Bb]yester[F]day',
+          { chords: 'F          Em7      A7           Dm', lyrics: 'Yesterday, love was such an easy game to play' },
+          { chords: 'Bb    C7              F', lyrics: 'Now I need a place to hide away' },
+          { chords: 'Dm   G          Bb    F', lyrics: 'Oh I believe in yesterday' },
         ],
       },
     ],
@@ -92,19 +98,19 @@ export const songs: Song[] = [
       {
         label: 'Verse 1',
         lines: [
-          '[C]I\'ve heard there was a [Am]secret chord',
-          'That [C]David played and it [Am]pleased the Lord',
-          'But [F]you don\'t really [C]care for music, [C]do you? [G]',
-          '[C]It goes like this, the [F]fourth, the fifth',
-          'The [Am]minor fall, the [F]major lift',
-          'The [G]baffled king com[C]posing Halle[Am]lujah',
+          { chords: 'C                           Am', lyrics: "I've heaaaaaard there was a secret chord" },
+          { chords: '     C                   Am', lyrics: 'That David played and it pleased the Lord' },
+          { chords: '    F                C               C       G', lyrics: "But you don't really care for music, do you? " },
+          { chords: 'C                      F', lyrics: 'It goes like this, the fourth, the fifth' },
+          { chords: '    Am              F', lyrics: 'The minor fall, the major lift' },
+          { chords: '    G               C           Am', lyrics: 'The baffled king composing Hallelujah' },
         ],
       },
       {
         label: 'Chorus',
         lines: [
-          '[F]Hallelujah, [Am]Hallelujah',
-          '[F]Hallelujah, [C]Hallelu[G]jah [C]',
+          { chords: 'F           Am', lyrics: 'Hallelujah, Hallelujah' },
+          { chords: 'F           C      G   C', lyrics: 'Hallelujah, Hallelujah ' },
         ],
       },
     ],
@@ -112,19 +118,49 @@ export const songs: Song[] = [
       {
         label: 'Verse 1',
         lines: [
-          '[Cmaj7]I\'ve heard there was a [Am9]secret chord',
-          'That [Cmaj7]David played and it [Am9]pleased the Lord',
-          'But [Fmaj7]you don\'t really [G13]care for music, [Cmaj7]do you? [G7sus4]',
-          '[Cmaj7]It goes like this, the [Fmaj7]fourth, the fifth',
-          'The [Am9]minor fall, the [Fmaj7]major lift',
-          'The [G13]baffled king com[Em7]posing Halle[Am9]lujah',
+          { chords: 'Cmaj7                  Am9', lyrics: "I've heard there was a secret chord" },
+          { chords: '     Cmaj7               Am9', lyrics: 'That David played and it pleased the Lord' },
+          { chords: '    Fmaj7            G13             Cmaj7   G7sus4', lyrics: "But you don't really care for music, do you? " },
+          { chords: 'Cmaj7                  Fmaj7', lyrics: 'It goes like this, the fourth, the fifth' },
+          { chords: '    Am9             Fmaj7', lyrics: 'The minor fall, the major lift' },
+          { chords: '    G13             Em7         Am9', lyrics: 'The baffled king composing Hallelujah' },
         ],
       },
       {
         label: 'Chorus',
         lines: [
-          '[Fmaj7]Hallelujah, [Am9]Hallelujah',
-          '[Fmaj7]Hallelujah, [Cmaj7]Hallelu[G13]jah [Cadd9]',
+          { chords: 'Fmaj7       Am9', lyrics: 'Hallelujah, Hallelujah' },
+          { chords: 'Fmaj7       Cmaj7  G13 Cadd9', lyrics: 'Hallelujah, Hallelujah ' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'veshamru-slow',
+    title: 'ושמרו',
+    links: {},
+    hebrewLyrics: 'ושמרו בני ישראל את השבת לעשות את השבת לדורותם ברית עולם ביני ובין בני ישראל אות היא לעולם כי ששת ימים עשה ה את השמים ואת הארץ וביום השביעי שבת וינפש',
+    standardSections: [
+      {
+        lines: [
+          { chords: 'Em  F Dm Am F     Am  Dm Am', lyrics: 'ושמ-רו בני ישראל את השבת' },
+          { chords: 'Am   Dm       Am  F    Am  Dm Am', lyrics: ' לע-שות את השבת לדורותם ברית עולם' },
+          { chords: 'E  Am         Dm  Em        F   G F', lyrics: 'ביני ובין בני ישראל אות היא לעולם' },
+          { chords: 'Em  Am        DmEm  F    G      F', lyrics: 'כי ששת ימים עשה ה את השמים ואת הארץ' },
+          { chords: 'Am Dm  Am F   Am  DmAm', lyrics: ' וביום השביעי שבת וינפש' },
+        ],
+      },
+    ],
+    advancedSections: [
+      {
+        lines: [
+          { chords: 'Em7  Fmaj7 Bb Am7 Fmaj7 Am7 Dm7 Am7', lyrics: ' ושמ--רו בני ישראל  את הש----בת' },
+          { chords: 'Am G  Dm       Am  D   Am7  Dm7 Am7', lyrics: '  לע--שות את השבת לדורותם ברית עו-לם' },
+          { chords: 'C7        Dm7 Em7 Fmaj7', lyrics: '    בי--ני ובין בני ישראל ' },
+          { chords: 'E7  Esus4 Bb Dm7/C   Dm7', lyrics: '  אות   היא  לעו---לם' },
+          { chords: 'A7   Dm7    Em7     Fmaj7', lyrics: '   כי ששת   ימים   עשה השם' },
+          { chords: 'E7 F7 G  Am  Bb Dm7/C  Dm7', lyrics: '  את     השמים ואת ה--א-רץ' },
+          { chords: 'Am G   Fmaj7 D/F# Fmaj7 Dm7 Am7', lyrics: '  וב-יום    השבי-עי    שבת וינפש' },
         ],
       },
     ],

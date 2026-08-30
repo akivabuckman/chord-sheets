@@ -1,9 +1,10 @@
 import type { SongSection } from '@/types/song';
-import { parseChordLine } from '@/utils/chordParser';
 
 interface LyricsDisplayProps {
   sections: SongSection[];
 }
+
+const HEBREW_PATTERN = /[֐-׿]/;
 
 export default function LyricsDisplay({ sections }: LyricsDisplayProps) {
   return (
@@ -15,21 +16,30 @@ export default function LyricsDisplay({ sections }: LyricsDisplayProps) {
               {section.label}
             </p>
           )}
-          <div className="font-mono text-sm leading-relaxed overflow-x-auto">
+          <div className="text-sm leading-relaxed overflow-x-auto">
             {section.lines.map((line, lineIdx) => {
-              if (line === '') {
+              if (line.lyrics === '' && !line.chords) {
                 return <div key={lineIdx} className="h-3" />;
               }
-              const { chords, lyrics, hasChords } = parseChordLine(line);
+              const isHebrew = HEBREW_PATTERN.test(line.lyrics);
+              const dir = isHebrew ? 'rtl' : 'ltr';
               return (
                 <div key={lineIdx}>
-                  {hasChords && (
-                    <pre className="text-blue-300 font-semibold leading-none whitespace-pre">
-                      {chords}
+                  {line.chords && (
+                    <pre
+                      dir={dir}
+                      className="text-blue-300 leading-none whitespace-pre"
+                      style={{ fontFamily: '"Courier New", monospace' }}
+                    >
+                      {line.chords}
                     </pre>
                   )}
-                  <pre className="text-gray-100 whitespace-pre">
-                    {lyrics}
+                  <pre
+                    dir={dir}
+                    className="text-gray-100 whitespace-pre"
+                    style={{ fontFamily: '"Courier New", monospace' }}
+                  >
+                    {line.lyrics}
                   </pre>
                 </div>
               );
