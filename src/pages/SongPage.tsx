@@ -72,7 +72,7 @@ export default function SongPage() {
       <header className="px-4 pt-12 pb-4 max-w-2xl mx-auto w-full">
         <button
           onClick={() => navigate('/')}
-          className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 border border-white/10 text-gray-200 text-sm font-medium hover:bg-white/20 transition-all mb-5"
+          className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 border border-white/10 text-gray-200 text-sm font-medium hover:bg-white/20 transition-all mb-5"
         >
           <BackIcon className="w-4 h-4" />
           {t.back}

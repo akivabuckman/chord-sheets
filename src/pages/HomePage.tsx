@@ -50,12 +50,11 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-950 via-gray-900 to-purple-950 flex flex-col">
-      <header className="px-4 pt-8 pb-4 max-w-2xl mx-auto w-full">
-        <div className="flex items-center gap-3 mb-1">
+      <header className="px-4 pt-12 pb-4 max-w-2xl mx-auto w-full">
+        <div className="flex items-center gap-3">
           <Music className="text-blue-400 w-6 h-6 shrink-0" />
           <h1 className="text-2xl font-bold text-white tracking-tight">{t.appTitle}</h1>
         </div>
-        <p className="text-sm text-gray-400 ms-9">{t.appSubtitle}</p>
       </header>
 
       <main className="flex-1 px-4 pb-24 max-w-2xl mx-auto w-full">
@@ -97,7 +96,7 @@ export default function HomePage() {
             <div className="flex items-center gap-2 mb-4">
               <button
                 onClick={() => setSort('alpha')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                className={`cursor-pointer flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                   sort === 'alpha'
                     ? 'bg-blue-600 text-white'
                     : 'bg-white/10 text-gray-300 hover:bg-white/15'
@@ -108,7 +107,7 @@ export default function HomePage() {
               </button>
               <button
                 onClick={() => setSort('date')}
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                className={`cursor-pointer flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition-all ${
                   sort === 'date'
                     ? 'bg-blue-600 text-white'
                     : 'bg-white/10 text-gray-300 hover:bg-white/15'
