@@ -95,12 +95,6 @@ export default function SongPage() {
       </header>
 
       <main className="flex-1 px-4 pb-28 max-w-2xl mx-auto w-full overflow-x-hidden">
-        {song.links.youtube && (
-          <div className="mb-6">
-            <YouTubeEmbed url={song.links.youtube} />
-          </div>
-        )}
-
         {hasStandard && hasAdvanced && (
           <div className="flex items-center gap-2 mb-4">
             <button
@@ -127,6 +121,11 @@ export default function SongPage() {
         )}
 
         <LyricsDisplay sections={sections} />
+        {song.links.youtube && (
+          <div className="mb-6">
+            <YouTubeEmbed url={song.links.youtube} />
+          </div>
+        )}
       </main>
 
       <Footer />
