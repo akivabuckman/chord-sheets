@@ -1,4 +1,4 @@
-import { getYouTubeEmbedUrl } from '@/utils/youtube';
+import { getYouTubeEmbedUrl, isYouTubeShort } from '@/utils/youtube';
 
 interface YouTubeEmbedProps {
   url: string;
@@ -9,8 +9,14 @@ export default function YouTubeEmbed({ url }: YouTubeEmbedProps) {
 
   if (!embedUrl) return null;
 
+  const vertical = isYouTubeShort(url);
+
   return (
-    <div className="w-full aspect-video rounded-lg overflow-hidden">
+    <div
+      className={`rounded-lg overflow-hidden ${
+        vertical ? 'aspect-[9/16] max-w-[320px] mx-auto' : 'w-full aspect-video'
+      }`}
+    >
       <iframe
         src={embedUrl}
         title="YouTube video player"

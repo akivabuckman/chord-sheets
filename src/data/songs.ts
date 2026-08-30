@@ -138,7 +138,7 @@ export const songs: Song[] = [
   {
     id: 'veshamru-slow',
     title: 'ושמרו',
-    links: {},
+    links: {youtube: "https://youtube.com/shorts/lXTmwjQQA3E"},
     hebrewLyrics: 'ושמרו בני ישראל את השבת לעשות את השבת לדורותם ברית עולם ביני ובין בני ישראל אות היא לעולם כי ששת ימים עשה ה את השמים ואת הארץ וביום השביעי שבת וינפש',
     standardSections: [
       {

@@ -8,7 +8,7 @@ const HEBREW_PATTERN = /[֐-׿]/;
 
 export default function LyricsDisplay({ sections }: LyricsDisplayProps) {
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 mb-4">
       {sections.map((section, sectionIdx) => (
         <div key={sectionIdx}>
           {section.label && (
