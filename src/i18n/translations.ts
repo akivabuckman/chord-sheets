@@ -2,7 +2,6 @@ export type Language = 'en' | 'he';
 
 export interface Translations {
   appTitle: string;
-  appSubtitle: string;
   searchPlaceholder: string;
   resultsCount: (n: number) => string;
   noSongsFound: string;
@@ -21,8 +20,7 @@ export interface Translations {
 
 export const translations: Record<Language, Translations> = {
   en: {
-    appTitle: 'Chord Sheets',
-    appSubtitle: 'Song lyrics with guitar chords',
+    appTitle: 'Awesome Chords',
     searchPlaceholder: 'Search songs or lyrics...',
     resultsCount: (n) => `${n} result${n !== 1 ? 's' : ''}`,
     noSongsFound: 'No songs found.',
@@ -39,8 +37,7 @@ export const translations: Record<Language, Translations> = {
     siteName: 'akivabuckman.com',
   },
   he: {
-    appTitle: 'שירונט אקורדים',
-    appSubtitle: 'מילים של שירים עם אקורדים',
+    appTitle: 'אחלה אקורדים',
     searchPlaceholder: 'חיפוש שירים או מילים...',
     resultsCount: (n) => `${n} תוצאות`,
     noSongsFound: 'לא נמצאו שירים.',
