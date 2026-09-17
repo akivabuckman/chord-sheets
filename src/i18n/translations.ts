@@ -20,7 +20,7 @@ export interface Translations {
 
 export const translations: Record<Language, Translations> = {
   en: {
-    appTitle: 'Awesome Chords',
+    appTitle: 'Chords for the Soul',
     searchPlaceholder: 'Search songs or lyrics...',
     resultsCount: (n) => `${n} result${n !== 1 ? 's' : ''}`,
     noSongsFound: 'No songs found.',
@@ -37,7 +37,7 @@ export const translations: Record<Language, Translations> = {
     siteName: 'akivabuckman.com',
   },
   he: {
-    appTitle: 'אחלה אקורדים',
+    appTitle: 'אקורדים לנשמה',
     searchPlaceholder: 'חיפוש שירים או מילים...',
     resultsCount: (n) => `${n} תוצאות`,
     noSongsFound: 'לא נמצאו שירים.',
