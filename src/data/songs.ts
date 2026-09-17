@@ -42,100 +42,6 @@ import type { Song } from '@/types/song';
 
 export const songs: Song[] = [
   {
-    id: 'yesterday-beatles',
-    title: 'Yesterday',
-    artist: 'The Beatles',
-    date: '2024-01-10',
-    links: {
-      youtube: 'https://www.youtube.com/watch?v=NrgmdOz227I',
-    },
-    standardSections: [
-      {
-        label: 'Verse 1',
-        lines: [
-          { chords: 'F          Em7    A7                 Dm', lyrics: 'Yesterday, all my troubles seemed so far away' },
-          { chords: 'Bb     C7                      F', lyrics: "Now it looks as though they're here to stay" },
-          { chords: 'Dm   G          Bb    F', lyrics: 'Oh I believe in yesterday' },
-        ],
-      },
-      {
-        label: 'Verse 2',
-        lines: [
-          { chords: 'F         Em7     A7             Dm', lyrics: "Suddenly, I'm not half the man I used to be" },
-          { chords: 'Bb        C7             F', lyrics: "There's a shadow hanging over me" },
-          { chords: 'Dm    G      Bb   F', lyrics: 'Oh yesterday came suddenly' },
-        ],
-      },
-      {
-        label: 'Chorus',
-        lines: [
-          { chords: 'Am      D           F                        C', lyrics: "Why she had to go I don't know, she wouldn't say" },
-          { chords: 'Am     D                      F           C', lyrics: 'I said something wrong, now I long for yesterday' },
-        ],
-      },
-      {
-        label: 'Verse 3',
-        lines: [
-          { chords: 'F          Em7      A7           Dm', lyrics: 'Yesterday, love was such an easy game to play' },
-          { chords: 'Bb    C7              F', lyrics: 'Now I need a place to hide away' },
-          { chords: 'Dm   G          Bb    F', lyrics: 'Oh I believe in yesterday' },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'hallelujah-cohen',
-    title: 'Hallelujah',
-    artist: 'Leonard Cohen',
-    date: '2024-02-14',
-    links: {
-      youtube: 'https://www.youtube.com/watch?v=ttEMYvpoR-k',
-      instagram: 'https://www.instagram.com/',
-    },
-    lyrics: "I've heard there was a secret chord\nThat David played and it pleased the Lord\nBut you don't really care for music, do you?",
-    hebrewLyrics: 'שמעתי שיש אקורד סודי\nשדוד ניגן וזה מצא חן בעיני האל\nאבל לא ממש אכפת לך ממוזיקה, נכון?',
-    standardSections: [
-      {
-        label: 'Verse 1',
-        lines: [
-          { chords: 'C                           Am', lyrics: "I've heaaaaaard there was a secret chord" },
-          { chords: '     C                   Am', lyrics: 'That David played and it pleased the Lord' },
-          { chords: '    F                C               C       G', lyrics: "But you don't really care for music, do you? " },
-          { chords: 'C                      F', lyrics: 'It goes like this, the fourth, the fifth' },
-          { chords: '    Am              F', lyrics: 'The minor fall, the major lift' },
-          { chords: '    G               C           Am', lyrics: 'The baffled king composing Hallelujah' },
-        ],
-      },
-      {
-        label: 'Chorus',
-        lines: [
-          { chords: 'F           Am', lyrics: 'Hallelujah, Hallelujah' },
-          { chords: 'F           C      G   C', lyrics: 'Hallelujah, Hallelujah ' },
-        ],
-      },
-    ],
-    advancedSections: [
-      {
-        label: 'Verse 1',
-        lines: [
-          { chords: 'Cmaj7                  Am9', lyrics: "I've heard there was a secret chord" },
-          { chords: '     Cmaj7               Am9', lyrics: 'That David played and it pleased the Lord' },
-          { chords: '    Fmaj7            G13             Cmaj7   G7sus4', lyrics: "But you don't really care for music, do you? " },
-          { chords: 'Cmaj7                  Fmaj7', lyrics: 'It goes like this, the fourth, the fifth' },
-          { chords: '    Am9             Fmaj7', lyrics: 'The minor fall, the major lift' },
-          { chords: '    G13             Em7         Am9', lyrics: 'The baffled king composing Hallelujah' },
-        ],
-      },
-      {
-        label: 'Chorus',
-        lines: [
-          { chords: 'Fmaj7       Am9', lyrics: 'Hallelujah, Hallelujah' },
-          { chords: 'Fmaj7       Cmaj7  G13 Cadd9', lyrics: 'Hallelujah, Hallelujah ' },
-        ],
-      },
-    ],
-  },
-  {
     id: 'veshamru-slow',
     title: 'ושמרו',
     links: {youtube: "https://youtube.com/shorts/lXTmwjQQA3E"},
@@ -161,6 +67,44 @@ export const songs: Song[] = [
           { chords: 'A7   Dm7    Em7     Fmaj7', lyrics: '   כי ששת   ימים   עשה השם' },
           { chords: 'E7 F7 G  Am  Bb Dm7/C  Dm7', lyrics: '  את     השמים ואת ה--א-רץ' },
           { chords: 'Am G   Fmaj7 D/F# Fmaj7 Dm7 Am7', lyrics: '  וב-יום    השבי-עי    שבת וינפש' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'hashem-malach',
+    title: 'ה מלך',
+    links: {youtube: "https://youtube.com/shorts/Q-djRusPEwY"},
+    hebrewLyrics: 'ה מלך גאות לבש לבש ה עז התעזר אף תיכון תבל בל תימות נכון כסאך מאז מעולם עתה נשאו נהרות ה נשאו נהרות קולם ישאו נהרות דכיים מקולות מים רבים אדירים משברי ים אדיר במרום ה עידותך נאמנו מאד לביתך נאוה קודש ה לאורך ימים',
+    standardSections: [
+      {
+        lines: [          
+          { chords: 'G     D  Am Em', lyrics: 'ה מלך  גאות לבש' },
+          { chords: 'Em    B  Am   E  G Em', lyrics: ' ל-בש אדו-ני עז התעזר' },
+          { chords: 'G        D  Am    Em', lyrics: ' אף תיכון תבל בל תימות' },
+          { chords: 'Em      B  Am  E      G Em', lyrics: ' נ-כון כסאך מאז  מעולם עתה' },
+          { chords: 'B   G          D            C      Em', lyrics: ' נשאו נהרות אדו-ני נשאו נהרות קולם' },
+          { chords: 'Em B       C     Em', lyrics: ' ישאו  נהרות   דכיים' },
+          { chords: 'B   G         D               C      Em', lyrics: ' מקולות מים   רבים   אדירים משברי ים' },
+          { chords: 'Em     B       C      Em', lyrics: ' אדיר   במרום   אדו---ני' },
+          { chords: 'G      D Am  Em', lyrics: 'עידותך נאמנו מאד' },
+          { chords: 'Em         B7      Am    E    G   Em', lyrics: ' לביתך   נאוה קודש אדו-ני לאורך  ימים' },
+        ],
+      },
+    ],
+    advancedSections: [
+      {
+        lines: [
+          { chords: 'G7/F  G     D7 Am6 Em', lyrics: 'ה   מלך גאות לבש' },
+          { chords: 'Em B7 F#m6  A   E/G# G Em', lyrics: ' ל-בש   אדו-ני    עז התעזר' },
+          { chords: 'G7/F   G        D7  Am6  Em', lyrics: ' אף תיכון תבל בל תימות' },
+          { chords: 'Em  B7 F#m6  A  E/G#   G Em', lyrics: ' נ-כון כסאך מאז    מעולם עתה' },
+          { chords: 'B7/A  C7/Bb B7   Cmaj7 A/C#    G/D  B+/D# Em', lyrics: ' נש----או נהרות אדו-ני  נשאו נהרות קולם' },
+          { chords: 'Em B7 F#m6  A/C# G/D B+/D# Em', lyrics: ' יש----או  נה---רות   ד----כיים' },
+          { chords: 'B7/A  C7/Bb     B7  Cmaj7    A/C#   G/D    B+/D# Em', lyrics: ' מ----קולות   מים   רבים   אדירים משברי    ים' },
+          { chords: 'Em   B7 F#m6 A/C# G/D   B+/D# Em', lyrics: 'א-----דיר   במ---רום   א----דוני' },
+          { chords: 'G7/F  G     D7 Am6 Em', lyrics: 'עידותך נאמנו מאד' },
+          { chords: 'Emadd9   B7  F#m6    A     E/G# G   Em', lyrics: ' לביתך   נאוה קודש אדו-ני לאורך     ימים' },
         ],
       },
     ],
