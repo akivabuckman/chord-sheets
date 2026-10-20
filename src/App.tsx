@@ -10,6 +10,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/song/:id" element={<SongPage />} />
+          <Route path="/song/:id/:level" element={<SongPage />} />
         </Routes>
       </LanguageProvider>
     </BrowserRouter>
