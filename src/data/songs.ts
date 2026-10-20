@@ -112,7 +112,7 @@ export const songs: Song[] = [
   {
     id: 'hashivenu',
     title: 'השבנו',
-    links: { googleDrive: 'https://drive.google.com/file/d/1fXC3o-9jJvaZieM5ert-MPa0FmzWiV1V/view?usp=sharing' },
+    links: { googleDrive: 'https://drive.google.com/file/d/1RZjc3uORE1TUcCsf0g5ndIMueFCd7WnK/view?usp=sharing' },
     hebrewLyrics: 'השבנו השם אליך ונשובה חדש ימנו כקדם',
     standardSections: [
       {
