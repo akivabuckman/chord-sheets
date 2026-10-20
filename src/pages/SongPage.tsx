@@ -5,7 +5,9 @@ import LyricsDisplay from '@/components/LyricsDisplay';
 import SocialLinks from '@/components/SocialLinks';
 import ShareButton from '@/components/ShareButton';
 import YouTubeEmbed from '@/components/YouTubeEmbed';
+import GoogleDriveEmbed from '@/components/GoogleDriveEmbed';
 import Footer from '@/components/Footer';
+import LanguageToggle from '@/components/LanguageToggle';
 import { useLanguage } from '@/context/LanguageContext';
 import { translateSectionLabel, type Language } from '@/i18n/translations';
 
@@ -38,7 +40,9 @@ export default function SongPage() {
         : 'standard';
 
   const setChordLevel = (level: ChordLevel): void => {
-    setSearchParams({ level }, { replace: true });
+    const next = new URLSearchParams(searchParams);
+    next.set('level', level);
+    setSearchParams(next, { replace: true });
   };
 
   if (!song) {
@@ -70,13 +74,16 @@ export default function SongPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-950 via-gray-900 to-purple-950 flex flex-col">
       <header className="px-4 pt-12 pb-4 max-w-2xl mx-auto w-full">
-        <button
-          onClick={() => navigate('/')}
-          className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 border border-white/10 text-gray-200 text-sm font-medium hover:bg-white/20 transition-all mb-5"
-        >
-          <BackIcon className="w-4 h-4" />
-          {t.back}
-        </button>
+        <div className="flex items-center justify-between mb-5">
+          <button
+            onClick={() => navigate('/')}
+            className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-white/10 border border-white/10 text-gray-200 text-sm font-medium hover:bg-white/20 transition-all"
+          >
+            <BackIcon className="w-4 h-4" />
+            {t.back}
+          </button>
+          <LanguageToggle />
+        </div>
 
         <h1 className="text-2xl font-bold text-white leading-tight">{song.title}</h1>
         {song.artist && (
@@ -124,6 +131,11 @@ export default function SongPage() {
         {song.links.youtube && (
           <div className="mb-6">
             <YouTubeEmbed url={song.links.youtube} />
+          </div>
+        )}
+        {song.links.googleDrive && (
+          <div className="mb-6">
+            <GoogleDriveEmbed url={song.links.googleDrive} />
           </div>
         )}
       </main>

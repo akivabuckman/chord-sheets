@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { createContext, useContext, useEffect, type ReactNode } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { translations, type Language, type Translations } from '@/i18n/translations';
 
 interface LanguageContextValue {
@@ -8,28 +9,34 @@ interface LanguageContextValue {
   toggleLanguage: () => void;
 }
 
-const STORAGE_KEY = 'chord-sheets-language';
+const DEFAULT_LANGUAGE: Language = 'en';
 
 const LanguageContext = createContext<LanguageContextValue | undefined>(undefined);
 
-function getInitialLanguage(): Language {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  return stored === 'he' || stored === 'en' ? stored : 'en';
-}
-
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>(getInitialLanguage);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const urlLang = searchParams.get('lang');
+  const language: Language = urlLang === 'he' || urlLang === 'en' ? urlLang : DEFAULT_LANGUAGE;
 
   const dir = language === 'he' ? 'rtl' : 'ltr';
 
   useEffect(() => {
     document.documentElement.lang = language;
     document.documentElement.dir = dir;
-    localStorage.setItem(STORAGE_KEY, language);
   }, [language, dir]);
 
+  useEffect(() => {
+    if (urlLang !== 'he' && urlLang !== 'en') {
+      const next = new URLSearchParams(searchParams);
+      next.set('lang', DEFAULT_LANGUAGE);
+      setSearchParams(next, { replace: true });
+    }
+  }, [urlLang, searchParams, setSearchParams]);
+
   const toggleLanguage = () => {
-    setLanguage((prev) => (prev === 'en' ? 'he' : 'en'));
+    const next = new URLSearchParams(searchParams);
+    next.set('lang', language === 'en' ? 'he' : 'en');
+    setSearchParams(next, { replace: true });
   };
 
   return (

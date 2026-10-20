@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { songs } from '@/data/songs';
 import SongCard from '@/components/SongCard';
 import Footer from '@/components/Footer';
+import LanguageToggle from '@/components/LanguageToggle';
 import { useLanguage } from '@/context/LanguageContext';
 import type { Song } from '@/types/song';
 
@@ -51,9 +52,12 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-950 via-gray-900 to-purple-950 flex flex-col">
       <header className="px-4 pt-12 pb-4 max-w-2xl mx-auto w-full">
-        <div className="flex items-center gap-3">
-          <Music className="text-blue-400 w-6 h-6 shrink-0" />
-          <h1 className="text-2xl font-bold text-white tracking-tight">{t.appTitle}</h1>
+        <div className="flex items-center justify-between gap-3">
+          <div className="flex items-center gap-3">
+            <Music className="text-blue-400 w-6 h-6 shrink-0" />
+            <h1 className="text-2xl font-bold text-white tracking-tight">{t.appTitle}</h1>
+          </div>
+          <LanguageToggle />
         </div>
       </header>
 
