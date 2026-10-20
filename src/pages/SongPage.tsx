@@ -6,7 +6,7 @@ import LyricsDisplay from '@/components/LyricsDisplay';
 import SocialLinks from '@/components/SocialLinks';
 import ShareButton from '@/components/ShareButton';
 import YouTubeEmbed from '@/components/YouTubeEmbed';
-import GoogleDriveEmbed from '@/components/GoogleDriveEmbed';
+import VideoEmbed from '@/components/VideoEmbed';
 import Footer from '@/components/Footer';
 import LanguageToggle from '@/components/LanguageToggle';
 import { useLanguage } from '@/context/LanguageContext';
@@ -144,9 +144,9 @@ export default function SongPage() {
             <YouTubeEmbed url={song.links.youtube} />
           </div>
         )}
-        {song.links.googleDrive && (
+        {song.links.video && (
           <div className="mb-6">
-            <GoogleDriveEmbed url={song.links.googleDrive} />
+            <VideoEmbed src={song.links.video} />
           </div>
         )}
       </main>
