@@ -100,6 +100,17 @@ export const songs: Song[] = [
           'The [G]baffled king com[C]posing Halle[Am]lujah',
         ],
       },
+<<<<<<< Updated upstream
+=======
+    ],
+  },
+  {
+    id: 'hashivenu',
+    title: 'השבנו',
+    links: { googleDrive: 'https://drive.google.com/file/d/1RZjc3uORE1TUcCsf0g5ndIMueFCd7WnK/view?usp=sharing' },
+    hebrewLyrics: 'השבנו השם אליך ונשובה חדש ימנו כקדם',
+    standardSections: [
+>>>>>>> Stashed changes
       {
         label: 'Chorus',
         lines: [
