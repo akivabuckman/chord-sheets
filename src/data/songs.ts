@@ -109,4 +109,33 @@ export const songs: Song[] = [
       },
     ],
   },
+  {
+    id: 'hashivenu',
+    title: 'השבנו',
+    links: { googleDrive: 'https://drive.google.com/file/d/1fXC3o-9jJvaZieM5ert-MPa0FmzWiV1V/view?usp=sharing' },
+    hebrewLyrics: 'השבנו השם אליך ונשובה חדש ימנו כקדם',
+    standardSections: [
+      {
+        lines: [          
+          { lyrics: 'ה הש---בנו  ה--שם  אליך', chords: 'Em      Am   Em    Am' },
+          { lyrics: 'ונשובה ונשו-בה    ה-שבנו השם', chords: 'Am   Em F     G Am    C  Dm  ' },
+          { lyrics: 'חדש חדש ימנו חדש ימנו  כקדם', chords: 'E   C      F        Em      Am' },
+          { lyrics: 'חדש חדש ימנו חדש ימנו  כקדם', chords: '    C  F        Em7     Am' },
+          { lyrics: 'ונשובה ונשו-בה ונשובה ונשו-בה', chords: ' G Am    C Dm   G Am    C Dm  ' },
+          { lyrics: 'הש-בנו השם', chords: 'Am   Em F' },        ],
+      },
+    ],
+    advancedSections: [
+      {
+        lines: [          
+          { lyrics: 'ה הש---בנו  ה--שם  אליך', chords: 'Em7  F  Am   Em6   Am' },
+          { lyrics: 'ונשובה ונשו-בה     ה-שב-נו השם', chords: 'Am  G Em Fmaj7  G Am7   C  Dm  ' },
+          { lyrics: 'חדש חדש ימנו חדש ימנו  כקדם', chords: 'E7  C Fm   F        Em7     Am' },
+          { lyrics: 'חדש חדש ימנו חדש ימנו  כקדם', chords: 'A7  C Fm   F        Em7     Am' },
+          { lyrics: 'ונשו--בה ונשו-בה    ונשו-בה ונשו-בה', chords: ' G  C   Am  Bbmaj7  G  C    Am7 Dm  ' },
+          { lyrics: '....הש-בנו השם', chords: 'Am   Em Fmaj7' },
+        ],
+      },
+    ],
+  },
 ];
