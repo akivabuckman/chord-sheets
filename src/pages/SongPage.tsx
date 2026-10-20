@@ -1,4 +1,5 @@
-import { useParams, useNavigate, useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { songs } from '@/data/songs';
 import LyricsDisplay from '@/components/LyricsDisplay';
@@ -20,18 +21,24 @@ function formatDate(dateStr: string, language: Language): string {
 }
 
 export default function SongPage() {
-  const { id } = useParams<{ id: string }>();
+  const { id, level: levelParam } = useParams<{ id: string; level?: string }>();
   const navigate = useNavigate();
+  const location = useLocation();
   const { t, dir, language } = useLanguage();
   const BackIcon = dir === 'rtl' ? ArrowRight : ArrowLeft;
 
   const song = songs.find((s) => s.id === id);
 
+  useEffect(() => {
+    document.title = song ? song.title : 'Chords for the Soul';
+    return () => {
+      document.title = 'Chords for the Soul';
+    };
+  }, [song]);
+
   const hasStandard = Boolean(song?.standardSections);
   const hasAdvanced = Boolean(song?.advancedSections);
 
-  const [searchParams, setSearchParams] = useSearchParams();
-  const levelParam = searchParams.get('level');
   const chordLevel: ChordLevel =
     levelParam === 'standard' || levelParam === 'advanced'
       ? levelParam
@@ -40,10 +47,14 @@ export default function SongPage() {
         : 'standard';
 
   const setChordLevel = (level: ChordLevel): void => {
-    const next = new URLSearchParams(searchParams);
-    next.set('level', level);
-    setSearchParams(next, { replace: true });
+    navigate(`/song/${id}/${level}${location.search}`, { replace: true });
   };
+
+  useEffect(() => {
+    if (song && levelParam !== 'standard' && levelParam !== 'advanced') {
+      navigate(`/song/${id}/${chordLevel}${location.search}`, { replace: true });
+    }
+  }, [song, levelParam, chordLevel, id, location.search, navigate]);
 
   if (!song) {
     return (

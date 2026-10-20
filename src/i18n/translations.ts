@@ -34,7 +34,7 @@ export const translations: Record<Language, Translations> = {
     share: 'Share',
     linkCopied: 'Link copied',
     chordFinderLink: 'Want to find your own chords? Try my chord finder',
-    siteName: 'akivabuckman.com',
+    siteName: 'akivabuckman.com/chord-finder',
   },
   he: {
     appTitle: 'אקורדים לנשמה',
@@ -51,7 +51,7 @@ export const translations: Record<Language, Translations> = {
     share: 'שיתוף',
     linkCopied: 'הקישור הועתק',
     chordFinderLink: 'רוצים למצוא אקורדים בעצמכם? נסו את מחפש האקורדים שלי',
-    siteName: 'akivabuckman.com',
+    siteName: 'akivabuckman.com/chord-finder',
   },
 };
 

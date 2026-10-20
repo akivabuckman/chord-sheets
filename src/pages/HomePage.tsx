@@ -1,6 +1,5 @@
 import { useState, useMemo } from 'react';
 import { Music, Search, Clock, ArrowDownAZ } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import { songs } from '@/data/songs';
 import SongCard from '@/components/SongCard';
 import Footer from '@/components/Footer';
@@ -32,7 +31,6 @@ const songsByDate = [...songs].sort((a, b) => dateValue(b) - dateValue(a));
 export default function HomePage() {
   const [query, setQuery] = useState<string>('');
   const [sort, setSort] = useState<SortMode>('alpha');
-  const navigate = useNavigate();
   const { t } = useLanguage();
 
   const isSearching = query.trim().length > 0;
@@ -83,14 +81,7 @@ export default function HomePage() {
             ) : (
               <div className="space-y-2">
                 {searchResults.map((song) => (
-                  <div
-                    key={song.id}
-                    onClick={() => navigate(`/song/${song.id}`)}
-                    className="cursor-pointer px-4 py-3 rounded-xl border border-white/10 bg-white/5 hover:bg-white/10 hover:border-blue-500/40 transition-all duration-200"
-                  >
-                    <p className="text-white font-medium text-sm">{song.title}</p>
-                    {song.artist && <p className="text-gray-400 text-xs">{song.artist}</p>}
-                  </div>
+                  <SongCard key={song.id} song={song} />
                 ))}
               </div>
             )}

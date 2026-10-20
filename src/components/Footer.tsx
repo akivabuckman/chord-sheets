@@ -15,7 +15,7 @@ export default function Footer() {
       </a>
       <span className="mx-2 opacity-40">·</span>
       <a
-        href="https://akivabuckman.com/"
+        href="https://akivabuckman.com/chord-finder"
         target="_blank"
         rel="noopener noreferrer"
         className="hover:text-blue-400 transition-colors"
