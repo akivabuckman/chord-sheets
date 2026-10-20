@@ -3,7 +3,7 @@ export interface SongLinks {
   instagram?: string;
   facebook?: string;
   youtube?: string;
-  googleDrive?: string;
+  video?: string;
 }
 
 export interface SongLine {
