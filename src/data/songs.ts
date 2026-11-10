@@ -138,4 +138,38 @@ export const songs: Song[] = [
       },
     ],
   },
+    {
+    id: 'vezakeni',
+    title: 'וזכני',
+    links: { youtube: 'https://youtube.com/shorts/Ug-W-Vhj_Uk' },
+    hebrewLyrics: 'וזכני לגדל בנים ובני בנים חכמים ונבונים אוהבי השם יראי אלקים אנשי אמת זרע קודש בהשם דבקים ומאירים את העולם בתורה ובמעשים טובים ובכל מלאכת עבודת הבורא',
+    standardSections: [
+      {
+        lines: [          
+          { lyrics: 'וזכני לגדל  בנים ובני בנים  ', chords: 'Dm   C     Am' },
+          { lyrics: 'חכמים   ונבונים', chords: 'G F  Am     E    Dm'},
+          { lyrics: 'אוהבי השם יראי אלקים', chords: 'Dm                C'},
+          { lyrics: 'אנשי אמת    זרע קודש בה-שם דבקים', chords: 'Am      Em          Am       Dm'},
+          { lyrics: 'ומאירים את העולם בתורה ובמעשים טובים', chords: 'Em            G     F            Am'},
+          { lyrics: 'וכבל מלאכת עבודת הבורא', chords: 'E  C                   F'},
+          { lyrics: 'ומאירים את העולם בתורה ובמעשים טובים', chords: 'Em            G     F            Am'},
+          { lyrics: 'וכבל מלאכת עבודת הבורא', chords: 'Am       G           F'},
+        ]
+      },
+    ],
+    advancedSections: [
+      {
+        lines: [          
+          { lyrics: 'וזכני לגדל בנים ובני בנים  ', chords: 'G F E7  Bb   Dm         D   C   E Am' },
+          { lyrics: 'חכמים    ונבונים', chords: 'G F  Am     E7    Bb'},
+          { lyrics: 'או---הבי השם יראי אלקים', chords: 'Fm  Dm        A7     Cmaj7'},
+          { lyrics: 'אנשי אמת    זרע קודש בה-שם דבקים', chords: 'Am G  F Em          Am       Bb'},
+          { lyrics: 'ומאירים את העולם בתורה ובמעשים טובים', chords: 'Em            G     F            Am'},
+          { lyrics: 'וכבל מלאכת עבודת הבורא', chords: 'E7 C(sus4)        F(add9)'},
+          { lyrics: 'ומאירים את העולם בתורה ובמעשים טובים', chords: 'Em            G     D            Am'},
+          { lyrics: 'וכבל מלאכת עבודת הבורא', chords: 'E D Am E     D           F'},
+        ],
+      },
+    ],
+  },
 ];
