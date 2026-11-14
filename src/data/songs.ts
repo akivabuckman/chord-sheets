@@ -160,7 +160,7 @@ export const songs: Song[] = [
     advancedSections: [
       {
         lines: [          
-          { lyrics: 'וזכני לגדל בנים ובני בנים  ', chords: 'G F E7  Bb   Dm         D   C   E Am' },
+          { lyrics: 'וזכני לגדל בנים ובני בנים  ', chords: 'Dm         D   C   E Am' },
           { lyrics: 'חכמים    ונבונים', chords: 'G F  Am     E7    Bb'},
           { lyrics: 'או---הבי השם יראי אלקים', chords: 'Fm  Dm        A7     Cmaj7'},
           { lyrics: 'אנשי אמת    זרע קודש בה-שם דבקים', chords: 'Am G  F Em          Am       Bb'},
